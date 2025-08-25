@@ -1,103 +1,73 @@
-import Image from "next/image";
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      {/* 英雄区域（原#home部分） */}
+      <section id="home" className="bg-gradient-to-r from-primary to-secondary text-white py-12 md:py-20">
+        {/* 英雄区域内容从原index.html复制 */}
+        <div className="container mx-auto px-4">
+                <div className="flex flex-col md:flex-row items-center">
+                    <div className="md:w-1/2 mb-8 md:mb-0">
+                        <h1 className="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-shadow mb-4">
+                            让每个学习者<br/>都能获得优质教育
+                        </h1>
+                        <p className="text-lg md:text-xl opacity-90 mb-8 max-w-lg">
+                            整合全国优质教育资源，提供一站式学习服务，助力教育公平与质量提升
+                        </p>
+                        <div className="flex flex-wrap gap-4">
+                            <button className="px-6 py-3 bg-white text-primary rounded-full font-medium hover:bg-gray-100 transition-custom shadow-lg">
+                                立即开始学习
+                            </button>
+                            <button className="px-6 py-3 bg-transparent border-2 border-white rounded-full font-medium hover:bg-white/10 transition-custom">
+                                了解平台功能 <i className="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                        <div className="mt-8 flex items-center text-sm">
+                            <div className="flex -space-x-2 mr-4">
+                                <img src="https://picsum.photos/id/1001/100/100" alt="用户头像" className="w-8 h-8 rounded-full border-2 border-white"/>
+                                <img src="https://picsum.photos/id/1002/100/100" alt="用户头像" className="w-8 h-8 rounded-full border-2 border-white"/>
+                                <img src="https://picsum.photos/id/1003/100/100" alt="用户头像" className="w-8 h-8 rounded-full border-2 border-white"/>
+                                <img src="https://picsum.photos/id/1004/100/100" alt="用户头像" className="w-8 h-8 rounded-full border-2 border-white"/>
+                                <div className="w-8 h-8 rounded-full bg-white/20 border-2 border-white flex items-center justify-center text-xs">
+                                    +25k
+                                </div>
+                            </div>
+                            <p>已有超过2500万师生使用</p>
+                        </div>
+                    </div>
+                    <div className="md:w-1/2 relative">
+                        <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl transform md:rotate-1 hover:rotate-0 transition-all duration-500">
+                            <img src="https://picsum.photos/id/20/600/400" alt="智慧教育平台展示" className="w-full h-auto"/>
+                        </div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-accent/30 rounded-xl blur-3xl -z-10"></div>
+                    </div>
+                </div>
+            </div>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      {/* 平台数据（原平台数据部分） */}
+      <section className="py-12 bg-white">
+        {/* 平台数据内容从原index.html复制 */}
+        <div className="container mx-auto px-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div className="p-6 rounded-xl bg-light">
+                        <div className="text-3xl md:text-4xl font-bold text-primary mb-2" id="counter1">373</div>
+                        <p className="text-gray-600">平台浏览量(亿)</p>
+                    </div>
+                    <div className="p-6 rounded-xl bg-light">
+                        <div className="text-3xl md:text-4xl font-bold text-primary mb-2" id="counter2">25.6</div>
+                        <p className="text-gray-600">访客总量(亿人次)</p>
+                    </div>
+                    <div className="p-6 rounded-xl bg-light">
+                        <div className="text-3xl md:text-4xl font-bold text-primary mb-2" id="counter3">215</div>
+                        <p className="text-gray-600">覆盖XX和地区</p>
+                    </div>
+                    <div className="p-6 rounded-xl bg-light">
+                        <div className="text-3xl md:text-4xl font-bold text-primary mb-2" id="counter4">51</div>
+                        <p className="text-gray-600">政务服务事项</p>
+                    </div>
+                </div>
+            </div>
+      </section>
+    </>
   );
 }

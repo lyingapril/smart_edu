@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧教育公共服务平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 引入Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <!-- 配置Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36BFFA',
+                        accent: '#FF7D00',
+                        success: '#00B42A',
+                        warning: '#FF7D00',
+                        danger: '#F53F3F',
+                        dark: '#1D2129',
+                        light: '#F2F3F5'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-custom {
+                transition: all 0.3s ease;
+            }
+            .card-hover {
+                @apply hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-dark">
+    <!-- 顶部通知栏 -->
+    <div class="bg-primary text-white text-center py-2 text-sm">
+        <div class="container mx-auto px-4">
+            <p>📢 平台2.0智能版已上线，新增12项政务服务事项 <a href="#" class="underline ml-2">了解更多</a></p>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <header class="sticky top-0 bg-white shadow-sm z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!--  Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center">
+                        <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white mr-3">
+                            <i class="fa fa-graduation-cap text-xl"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-primary">智慧教育平台</h1>
+                            <p class="text-xs text-gray-500 -mt-1">XX公共服务平台</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-primary font-medium border-b-2 border-primary py-1">首页</a>
+                    <a href="#resources" class="text-gray-600 hover:text-primary transition-custom py-1">教育资源</a>
+                    <a href="#services" class="text-gray-600 hover:text-primary transition-custom py-1">服务大厅</a>
+                    <a href="#stages" class="text-gray-600 hover:text-primary transition-custom py-1">教育阶段</a>
+                    <a href="#features" class="text-gray-600 hover:text-primary transition-custom py-1">特色服务</a>
+                </nav>
+
+                <!-- 用户区域 -->
+                <div class="flex items-center space-x-4">
+                    <button class="hidden md:block px-4 py-2 text-primary border border-primary rounded-full hover:bg-primary/5 transition-custom">
+                        <i class="fa fa-search mr-1"></i> 搜索
+                    </button>
+                    <button class="hidden md:block px-4 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-custom">
+                        <i class="fa fa-user-circle mr-1"></i> 登录/注册
+                    </button>
+                    <!-- 移动端菜单按钮 -->
+                    <button class="md:hidden text-gray-600 focus:outline-none" id="menuBtn">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 移动端导航菜单 -->
+        <div class="md:hidden hidden bg-white border-t" id="mobileMenu">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="#home" class="block py-2 text-primary font-medium">首页</a>
+                <a href="#resources" class="block py-2 text-gray-600 hover:text-primary">教育资源</a>
+                <a href="#services" class="block py-2 text-gray-600 hover:text-primary">服务大厅</a>
+                <a href="#stages" class="block py-2 text-gray-600 hover:text-primary">教育阶段</a>
+                <a href="#features" class="block py-2 text-gray-600 hover:text-primary">特色服务</a>
+                <div class="pt-2 flex space-x-3">
+                    <button class="flex-1 px-4 py-2 text-primary border border-primary rounded-full hover:bg-primary/5">
+                        <i class="fa fa-search mr-1"></i> 搜索
+                    </button>
+                    <button class="flex-1 px-4 py-2 bg-primary text-white rounded-full hover:bg-primary/90">
+                        <i class="fa fa-user-circle mr-1"></i> 登录
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 英雄区域 -->
+        <section id="home" class="bg-gradient-to-r from-primary to-secondary text-white py-12 md:py-20">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-shadow mb-4">
+                            让每个学习者<br>都能获得优质教育
+                        </h1>
+                        <p class="text-lg md:text-xl opacity-90 mb-8 max-w-lg">
+                            整合全国优质教育资源，提供一站式学习服务，助力教育公平与质量提升
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <button class="px-6 py-3 bg-white text-primary rounded-full font-medium hover:bg-gray-100 transition-custom shadow-lg">
+                                立即开始学习
+                            </button>
+                            <button class="px-6 py-3 bg-transparent border-2 border-white rounded-full font-medium hover:bg-white/10 transition-custom">
+                                了解平台功能 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                        <div class="mt-8 flex items-center text-sm">
+                            <div class="flex -space-x-2 mr-4">
+                                <img src="https://picsum.photos/id/1001/100/100" alt="用户头像" class="w-8 h-8 rounded-full border-2 border-white">
+                                <img src="https://picsum.photos/id/1002/100/100" alt="用户头像" class="w-8 h-8 rounded-full border-2 border-white">
+                                <img src="https://picsum.photos/id/1003/100/100" alt="用户头像" class="w-8 h-8 rounded-full border-2 border-white">
+                                <img src="https://picsum.photos/id/1004/100/100" alt="用户头像" class="w-8 h-8 rounded-full border-2 border-white">
+                                <div class="w-8 h-8 rounded-full bg-white/20 border-2 border-white flex items-center justify-center text-xs">
+                                    +25k
+                                </div>
+                            </div>
+                            <p>已有超过2500万师生使用</p>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 relative">
+                        <div class="relative z-10 rounded-xl overflow-hidden shadow-2xl transform md:rotate-1 hover:rotate-0 transition-all duration-500">
+                            <img src="https://picsum.photos/id/20/600/400" alt="智慧教育平台展示" class="w-full h-auto">
+                        </div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-accent/30 rounded-xl blur-3xl -z-10"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 平台数据 -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="p-6 rounded-xl bg-light">
+                        <div class="text-3xl md:text-4xl font-bold text-primary mb-2" id="counter1">373</div>
+                        <p class="text-gray-600">平台浏览量(亿)</p>
+                    </div>
+                    <div class="p-6 rounded-xl bg-light">
+                        <div class="text-3xl md:text-4xl font-bold text-primary mb-2" id="counter2">25.6</div>
+                        <p class="text-gray-600">访客总量(亿人次)</p>
+                    </div>
+                    <div class="p-6 rounded-xl bg-light">
+                        <div class="text-3xl md:text-4xl font-bold text-primary mb-2" id="counter3">215</div>
+                        <p class="text-gray-600">覆盖XX和地区</p>
+                    </div>
+                    <div class="p-6 rounded-xl bg-light">
+                        <div class="text-3xl md:text-4xl font-bold text-primary mb-2" id="counter4">51</div>
+                        <p class="text-gray-600">政务服务事项</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 教育资源 -->
+        <section id="resources" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">优质教育资源</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">汇聚全国各级各类优质教育资源，涵盖课程、教材、课件等多种形式，满足不同学习需求</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 资源卡片1 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://picsum.photos/id/24/600/400" alt="精品课程" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">课程资源</span>
+                                <span class="ml-auto text-gray-500 text-sm"><i class="fa fa-eye mr-1"></i> 125.8万</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">精品课程库</h3>
+                            <p class="text-gray-600 mb-4">涵盖从小学到大学的各类精品课程，由全国知名教师录制，支持在线学习和下载</p>
+                            <a href="#" class="text-primary font-medium inline-flex items-center">
+                                查看全部 <i class="fa fa-angle-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 资源卡片2 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://picsum.photos/id/25/600/400" alt="数字教材" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full">教材资源</span>
+                                <span class="ml-auto text-gray-500 text-sm"><i class="fa fa-eye mr-1"></i> 98.5万</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">数字教材中心</h3>
+                            <p class="text-gray-600 mb-4">正版数字教材库，支持在线阅读和离线下载，包含各学科、各版本教材资源</p>
+                            <a href="#" class="text-primary font-medium inline-flex items-center">
+                                查看全部 <i class="fa fa-angle-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 资源卡片3 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://picsum.photos/id/26/600/400" alt="教学课件" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span class="px-3 py-1 bg-accent/10 text-accent text-sm rounded-full">教学资源</span>
+                                <span class="ml-auto text-gray-500 text-sm"><i class="fa fa-eye mr-1"></i> 76.3万</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">教学课件库</h3>
+                            <p class="text-gray-600 mb-4">丰富的教学课件资源，包括PPT、教案、习题等，助力教师高效备课</p>
+                            <a href="#" class="text-primary font-medium inline-flex items-center">
+                                查看全部 <i class="fa fa-angle-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 text-center">
+                    <button class="px-6 py-3 border border-primary text-primary rounded-full font-medium hover:bg-primary hover:text-white transition-custom">
+                        浏览全部资源 <i class="fa fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 服务大厅 -->
+        <section id="services" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">服务大厅</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">提供各类教育政务服务事项和应用，让您的教育相关事务办理更便捷</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- 服务项1 -->
+                    <div class="bg-light rounded-xl p-6 text-center card-hover">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-graduation-cap text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">学历学位认证</h3>
+                        <p class="text-gray-600 text-sm">提供学历学位查询与认证服务</p>
+                    </div>
+
+                    <!-- 服务项2 -->
+                    <div class="bg-light rounded-xl p-6 text-center card-hover">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-book text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">考试服务</h3>
+                        <p class="text-gray-600 text-sm">各类考试报名、成绩查询等服务</p>
+                    </div>
+
+                    <!-- 服务项3 -->
+                    <div class="bg-light rounded-xl p-6 text-center card-hover">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-briefcase text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">就业服务</h3>
+                        <p class="text-gray-600 text-sm">提供就业信息与指导服务</p>
+                    </div>
+
+                    <!-- 服务项4 -->
+                    <div class="bg-light rounded-xl p-6 text-center card-hover">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-plane text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">留学服务</h3>
+                        <p class="text-gray-600 text-sm">出国留学相关咨询与服务</p>
+                    </div>
+
+                    <!-- 服务项5 -->
+                    <div class="bg-light rounded-xl p-6 text-center card-hover">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-id-card text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">学籍管理</h3>
+                        <p class="text-gray-600 text-sm">学籍查询、异动等管理服务</p>
+                    </div>
+
+                    <!-- 服务项6 -->
+                    <div class="bg-light rounded-xl p-6 text-center card-hover">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-trophy text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">竞赛活动</h3>
+                        <p class="text-gray-600 text-sm">各类教育竞赛活动报名与信息</p>
+                    </div>
+
+                    <!-- 服务项7 -->
+                    <div class="bg-light rounded-xl p-6 text-center card-hover">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-credit-card text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">缴费服务</h3>
+                        <p class="text-gray-600 text-sm">教育相关费用在线缴纳</p>
+                    </div>
+
+                    <!-- 服务项8 -->
+                    <div class="bg-light rounded-xl p-6 text-center card-hover">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-ellipsis-h text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">更多服务</h3>
+                        <p class="text-gray-600 text-sm">其他教育相关服务事项</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 教育阶段 -->
+        <section id="stages" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">各教育阶段</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">针对不同教育阶段提供专属资源和服务，满足从学前到高等教育的多样化需求</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- 学前教育 -->
+                    <div class="relative rounded-2xl overflow-hidden group">
+                        <img src="https://picsum.photos/id/119/600/400" alt="学前教育" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
+                                <i class="fa fa-child text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">学前教育</h3>
+                            <p class="mb-4 opacity-90">为3-6岁儿童提供启蒙教育资源，包括儿歌、故事、益智游戏等</p>
+                            <a href="#" class="inline-flex items-center font-medium group-hover:underline">
+                                进入学前教育板块 <i class="fa fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 中小学教育 -->
+                    <div class="relative rounded-2xl overflow-hidden group">
+                        <img src="https://picsum.photos/id/20/600/400" alt="中小学教育" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
+                                <i class="fa fa-school text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">中小学教育</h3>
+                            <p class="mb-4 opacity-90">覆盖小学到高中各学科课程资源，助力学生全面发展</p>
+                            <a href="#" class="inline-flex items-center font-medium group-hover:underline">
+                                进入中小学教育板块 <i class="fa fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 高等教育 -->
+                    <div class="relative rounded-2xl overflow-hidden group">
+                        <img src="https://picsum.photos/id/48/600/400" alt="高等教育" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
+                                <i class="fa fa-university text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">高等教育</h3>
+                            <p class="mb-4 opacity-90">为高校师生提供优质课程、科研资源和学术交流平台</p>
+                            <a href="#" class="inline-flex items-center font-medium group-hover:underline">
+                                进入高等教育板块 <i class="fa fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 职业教育和终身学习 -->
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 职业教育 -->
+                    <div class="relative rounded-2xl overflow-hidden group">
+                        <img src="https://picsum.photos/id/42/600/300" alt="职业教育" class="w-full h-60 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
+                                <i class="fa fa-cogs text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">职业教育</h3>
+                            <p class="mb-4 opacity-90">提供职业技能培训资源，助力职业发展和技能提升</p>
+                            <a href="#" class="inline-flex items-center font-medium group-hover:underline">
+                                进入职业教育板块 <i class="fa fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 终身学习 -->
+                    <div class="relative rounded-2xl overflow-hidden group">
+                        <img src="https://picsum.photos/id/24/600/300" alt="终身学习" class="w-full h-60 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
+                                <i class="fa fa-book text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">终身学习</h3>
+                            <p class="mb-4 opacity-90">面向社会学习者的各类知识资源，支持终身学习需求</p>
+                            <a href="#" class="inline-flex items-center font-medium group-hover:underline">
+                                进入终身学习板块 <i class="fa fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 特色服务 -->
+        <section id="features" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">特色服务</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">平台特色功能与服务，为学习者和教育工作者提供全方位支持</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <!-- 特色1：读书平台 -->
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-2/5">
+                            <div class="rounded-xl overflow-hidden h-full">
+                                <img src="https://picsum.photos/id/24/400/500" alt="读书平台" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="md:w-3/5 flex flex-col justify-center">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full inline-block mb-3 w-fit">
+                                <i class="fa fa-book mr-1"></i> 读书平台
+                            </span>
+                            <h3 class="text-2xl font-bold mb-3">数字阅读空间</h3>
+                            <p class="text-gray-600 mb-4">设有"青少年读书空间""老年读书社区"等多个板块，汇聚海量电子书籍和阅读资源，全部免费向用户开放，培养阅读习惯，提升全民素养。</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                    <span>百万册电子书籍免费阅读</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                    <span>个性化阅读推荐</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                    <span>阅读小组与交流社区</span>
+                                </li>
+                            </ul>
+                            <a href="#" class="text-primary font-medium inline-flex items-center w-fit">
+                                进入读书平台 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 特色2：AI智能学习 -->
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-2/5">
+                            <div class="rounded-xl overflow-hidden h-full">
+                                <img src="https://picsum.photos/id/180/400/500" alt="AI智能学习" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="md:w-3/5 flex flex-col justify-center">
+                            <span class="px-3 py-1 bg-accent/10 text-accent text-sm rounded-full inline-block mb-3 w-fit">
+                                <i class="fa fa-robot mr-1"></i> AI智能
+                            </span>
+                            <h3 class="text-2xl font-bold mb-3">智能学习助手</h3>
+                            <p class="text-gray-600 mb-4">基于人工智能技术，为学习者提供个性化学习路径规划、智能答疑、作业批改等服务，提升学习效率和效果。</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                    <span>个性化学习计划制定</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                    <span>AI智能解题与辅导</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                    <span>学习效果评估与反馈</span>
+                                </li>
+                            </ul>
+                            <a href="#" class="text-primary font-medium inline-flex items-center w-fit">
+                                体验AI学习 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 特色3：地方平台 -->
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-2/5">
+                            <div class="rounded-xl overflow-hidden h-full">
+                                <img src="https://picsum.photos/id/101/400/500" alt="地方平台" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="md:w-3/5 flex flex-col justify-center">
+                            <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full inline-block mb-3 w-fit">
+                                <i class="fa fa-map-marker mr-1"></i> 地方服务
+                            </span>
+                            <h3 class="text-2xl font-bold mb-3">地方教育平台</h3>
+                            <p class="text-gray-600 mb-4">覆盖全国32个地区的地方教育平台，整合地方特色教育资源和服务，实现教育服务"全国一盘棋"，促进区域教育均衡发展。</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                    <span>地方特色教育资源</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                    <span>区域教育政策与资讯</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                    <span>地方教育服务入口</span>
+                                </li>
+                            </ul>
+                            <a href="#" class="text-primary font-medium inline-flex items-center w-fit">
+                                查看地方平台 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 特色4：国际平台 -->
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-2/5">
+                            <div class="rounded-xl overflow-hidden h-full">
+                                <img src="https://picsum.photos/id/103/400/500" alt="国际平台" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="md:w-3/5 flex flex-col justify-center">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full inline-block mb-3 w-fit">
+                                <i class="fa fa-globe mr-1"></i> 国际交流
+                            </span>
+                            <h3 class="text-2xl font-bold mb-3">国际教育平台</h3>
+                            <p class="text-gray-600 mb-4">面向国际学生提供咨询、资源和政务等服务，促进国际教育交流与合作，展示中国教育发展成果。</p>
+                            <ul class="space-y-2 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                    <span>来华留学指南与服务</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                    <span>中国教育国际交流项目</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                    <span>多语言教育资源</span>
+                                </li>
+                            </ul>
+                            <a href="#" class="text-primary font-medium inline-flex items-center w-fit">
+                                访问国际平台 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 使用数据 -->
+        <section class="py-16 bg-primary/5">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">平台使用数据</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">平台资源使用情况与用户增长数据统计</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- 图表1：资源使用分布 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-lg font-bold mb-4">资源类型使用分布</h3>
+                        <div class="h-80">
+                            <canvas id="resourceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- 图表2：用户增长趋势 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-lg font-bold mb-4">用户增长趋势 (近6个月)</h3>
+                        <div class="h-80">
+                            <canvas id="userGrowthChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 注册引导 -->
+        <section class="py-16 bg-gradient-to-r from-primary to-secondary text-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6">立即加入智慧教育平台</h2>
+                    <p class="text-xl opacity-90 mb-8">注册账号，畅享海量优质教育资源和便捷服务</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="px-8 py-4 bg-white text-primary rounded-full font-medium text-lg hover:bg-gray-100 transition-custom shadow-lg">
+                            免费注册
+                        </button>
+                        <button class="px-8 py-4 bg-transparent border-2 border-white rounded-full font-medium text-lg hover:bg-white/10 transition-custom">
+                            了解更多
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- 关于平台 -->
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-primary mr-3">
+                            <i class="fa fa-graduation-cap text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">智慧教育平台</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">XX智慧教育公共服务平台，整合优质教育资源，提供一站式教育服务，促进教育公平与质量提升。</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-custom">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-custom">
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-custom">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 快速链接 -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">快速链接</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-custom">首页</a></li>
+                        <li><a href="#resources" class="text-gray-400 hover:text-white transition-custom">教育资源</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-custom">服务大厅</a></li>
+                        <li><a href="#stages" class="text-gray-400 hover:text-white transition-custom">教育阶段</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-custom">特色服务</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-custom">帮助中心</a></li>
+                    </ul>
+                </div>
+
+                <!-- 联系我们 -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">联系我们</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-gray-400 mt-1 mr-3"></i>
+                            <span class="text-gray-400">北京市西城区复兴门内大街160号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">400-123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">contact@XXsmarteduXX.cn</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-clock-o text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">工作日 9:00-18:00</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 订阅 -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">订阅资讯</h4>
+                    <p class="text-gray-400 mb-4">订阅我们的资讯，获取最新教育动态和平台更新信息</p>
+                    <form class="mb-4">
+                        <div class="flex">
+                            <input type="email" placeholder="您的邮箱地址" class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-dark">
+                            <button type="submit" class="bg-primary px-4 py-2 rounded-r-lg hover:bg-primary/90 transition-custom">
+                                <i class="fa fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <p class="text-gray-500 text-sm">我们尊重您的隐私，不会向第三方分享您的信息</p>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 智慧教育公共服务平台 版权所有 | 京ICP备12345678号</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-500 hover:text-gray-300 text-sm">隐私政策</a>
+                        <a href="#" class="text-gray-500 hover:text-gray-300 text-sm">使用条款</a>
+                        <a href="#" class="text-gray-500 hover:text-gray-300 text-sm">网站地图</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('shadow-sm');
+            }
+        });
+
+        // 回到顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // 数字计数器动画
+        function animateCounter(elementId, targetValue, duration = 2000) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            let startValue = 0;
+            const increment = targetValue / (duration / 16);
+            let currentValue = startValue;
+            
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= targetValue) {
+                    clearInterval(timer);
+                    currentValue = targetValue;
+                }
+                element.textContent = currentValue.toFixed(1);
+            }, 16);
+        }
+
+        // 检测元素是否在视口中
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 启动计数器动画
+                    if (entry.target.id === 'counter1') animateCounter('counter1', 373);
+                    if (entry.target.id === 'counter2') animateCounter('counter2', 25.6);
+                    if (entry.target.id === 'counter3') animateCounter('counter3', 215);
+                    if (entry.target.id === 'counter4') animateCounter('counter4', 51);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // 观察计数器元素
+        document.querySelectorAll('[id^="counter"]').forEach(counter => {
+            observer.observe(counter);
+        });
+
+        // 资源类型使用分布图表
+        const resourceCtx = document.getElementById('resourceChart').getContext('2d');
+        const resourceChart = new Chart(resourceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['课程资源', '教材资源', '教学课件', '习题资源', '视频资源', '其他资源'],
+                datasets: [{
+                    data: [35, 20, 15, 12, 10, 8],
+                    backgroundColor: [
+                        '#165DFF',
+                        '#36BFFA',
+                        '#00B42A',
+                        '#FF7D00',
+                        '#722ED1',
+                        '#86909C'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+
+        // 用户增长趋势图表
+        const userGrowthCtx = document.getElementById('userGrowthChart').getContext('2d');
+        const userGrowthChart = new Chart(userGrowthCtx, {
+            type: 'line',
+            data: {
+                labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+                datasets: [{
+                    label: '用户数量(百万)',
+                    data: [185, 203, 215, 228, 242, 256],
+                    borderColor: '#165DFF',
+                    backgroundColor: 'rgba(22, 93, 255, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
