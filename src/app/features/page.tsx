@@ -15,7 +15,7 @@ export default function FeaturesPage() {
                     <div className="flex flex-col md:flex-row gap-6">
                         <div className="md:w-2/5">
                             <div className="rounded-xl overflow-hidden h-full">
-                                <Image src="https://picsum.photos/id/24/400/500" alt="读书平台" className="w-full h-full object-cover"/>
+                                <Image width={400} height={500} src="https://picsum.photos/id/24/400/500" alt="读书平台" className="w-full h-full object-cover"/>
                             </div>
                         </div>
                         <div className="md:w-3/5 flex flex-col justify-center">
@@ -48,7 +48,7 @@ export default function FeaturesPage() {
                     <div className="flex flex-col md:flex-row gap-6">
                         <div className="md:w-2/5">
                             <div className="rounded-xl overflow-hidden h-full">
-                                <Image src="https://picsum.photos/id/180/400/500" alt="AI智能学习" className="w-full h-full object-cover"/>
+                                <Image width={400} height={500} src="https://picsum.photos/id/180/400/500" alt="AI智能学习" className="w-full h-full object-cover"/>
                             </div>
                         </div>
                         <div className="md:w-3/5 flex flex-col justify-center">
@@ -81,7 +81,7 @@ export default function FeaturesPage() {
                     <div className="flex flex-col md:flex-row gap-6">
                         <div className="md:w-2/5">
                             <div className="rounded-xl overflow-hidden h-full">
-                                <Image src="https://picsum.photos/id/101/400/500" alt="地方平台" className="w-full h-full object-cover"/>
+                                <Image width={400} height={500} src="https://picsum.photos/id/101/400/500" alt="地方平台" className="w-full h-full object-cover"/>
                             </div>
                         </div>
                         <div className="md:w-3/5 flex flex-col justify-center">
@@ -114,7 +114,7 @@ export default function FeaturesPage() {
                     <div className="flex flex-col md:flex-row gap-6">
                         <div className="md:w-2/5">
                             <div className="rounded-xl overflow-hidden h-full">
-                                <Image src="https://picsum.photos/id/103/400/500" alt="国际平台" className="w-full h-full object-cover"/>
+                                <Image width={400} height={500} src="https://picsum.photos/id/103/400/500" alt="国际平台" className="w-full h-full object-cover"/>
                             </div>
                         </div>
                         <div className="md:w-3/5 flex flex-col justify-center">

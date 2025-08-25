@@ -13,7 +13,7 @@ export default function StagesPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* 学前教育 */}
                     <div className="relative rounded-2xl overflow-hidden group">
-                        <Image src="https://picsum.photos/id/119/600/400" alt="学前教育" className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"/>
+                        <Image width={600} height={400} src="https://picsum.photos/id/119/600/400" alt="学前教育" className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"/>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                         <div className="absolute bottom-0 left-0 p-6 text-white">
                             <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
@@ -29,7 +29,7 @@ export default function StagesPage() {
 
                     {/* 中小学教育 */}
                     <div className="relative rounded-2xl overflow-hidden group">
-                        <Image src="https://picsum.photos/id/20/600/400" alt="中小学教育" className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"/>
+                        <Image width={600} height={400} src="https://picsum.photos/id/20/600/400" alt="中小学教育" className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"/>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                         <div className="absolute bottom-0 left-0 p-6 text-white">
                             <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
@@ -45,7 +45,7 @@ export default function StagesPage() {
 
                     {/* 高等教育 */}
                     <div className="relative rounded-2xl overflow-hidden group">
-                        <Image src="https://picsum.photos/id/48/600/400" alt="高等教育" className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"/>
+                        <Image width={600} height={400} src="https://picsum.photos/id/48/600/400" alt="高等教育" className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"/>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                         <div className="absolute bottom-0 left-0 p-6 text-white">
                             <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
@@ -64,7 +64,7 @@ export default function StagesPage() {
                 <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* 职业教育 */}
                     <div className="relative rounded-2xl overflow-hidden group">
-                        <Image src="https://picsum.photos/id/42/600/300" alt="职业教育" className="w-full h-60 object-cover transition-transform duration-700 group-hover:scale-110"/>
+                        <Image width={600} height={300} src="https://picsum.photos/id/42/600/300" alt="职业教育" className="w-full h-60 object-cover transition-transform duration-700 group-hover:scale-110"/>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                         <div className="absolute bottom-0 left-0 p-6 text-white">
                             <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
@@ -80,7 +80,7 @@ export default function StagesPage() {
 
                     {/* 终身学习 */}
                     <div className="relative rounded-2xl overflow-hidden group">
-                        <Image src="https://picsum.photos/id/24/600/300" alt="终身学习" className="w-full h-60 object-cover transition-transform duration-700 group-hover:scale-110"/>
+                        <Image width={600} height={300} src="https://picsum.photos/id/24/600/300" alt="终身学习" className="w-full h-60 object-cover transition-transform duration-700 group-hover:scale-110"/>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                         <div className="absolute bottom-0 left-0 p-6 text-white">
                             <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">

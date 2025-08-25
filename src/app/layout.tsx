@@ -45,10 +45,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     {/* 关于平台 */}
                     <div>
                         <div className="flex items-center mb-6">
-                            <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-primary mr-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-primary mr-3">
                                 <i className="fa fa-graduation-cap text-xl"></i>
                             </div>
-                            <h3 className="text-xl font-bold">智慧教育平台</h3>
+                            <h3 className="text-xl font-bold text-black">智慧教育平台</h3>
                         </div>
                         <p className="text-gray-400 mb-6">XX智慧教育公共服务平台，整合优质教育资源，提供一站式教育服务，促进教育公平与质量提升。</p>
                         <div className="flex space-x-4">
@@ -66,7 +66,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
                     {/* 快速链接 */}
                     <div>
-                        <h4 className="text-lg font-bold mb-6">快速链接</h4>
+                        <h4 className="text-lg font-bold mb-6 text-black">快速链接</h4>
                         <ul className="space-y-3">
                             <li><a href="./" className="text-gray-400 hover:text-white transition-custom">首页</a></li>
                             <li><a href="./resources" className="text-gray-400 hover:text-white transition-custom">教育资源</a></li>
@@ -79,7 +79,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
                     {/* 联系我们 */}
                     <div>
-                        <h4 className="text-lg font-bold mb-6">联系我们</h4>
+                        <h4 className="text-lg font-bold mb-6 text-black">联系我们</h4>
                         <ul className="space-y-3">
                             <li className="flex items-start">
                                 <i className="fa fa-map-marker text-gray-400 mt-1 mr-3"></i>
@@ -102,11 +102,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
                     {/* 订阅 */}
                     <div>
-                        <h4 className="text-lg font-bold mb-6">订阅资讯</h4>
+                        <h4 className="text-lg font-bold mb-6 text-black">订阅资讯</h4>
                         <p className="text-gray-400 mb-4">订阅我们的资讯，获取最新教育动态和平台更新信息</p>
                         <form className="mb-4">
                             <div className="flex">
-                                <input type="email" placeholder="您的邮箱地址" className="px-4 py-2 rounded-l-lg w-full focus:outline-none text-dark"/>
+                                <input type="email" placeholder="您的邮箱地址" className="px-4 py-2 rounded-l-lg w-full bg-primary focus:outline-none text-dark"/>
                                 <button type="submit" className="bg-primary px-4 py-2 rounded-r-lg hover:bg-primary/90 transition-custom">
                                     <i className="fa fa-paper-plane"></i>
                                 </button>

@@ -8,17 +8,22 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#165DFF',
-        secondary: '#36BFFA',
-        accent: '#FF7D00',
-        success: '#00B42A',
-        warning: '#FF7D00',
-        danger: '#F53F3F',
-        dark: '#1D2129',
-        light: '#F2F3F5'
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+        accent: 'var(--color-accent)',
+        success: 'var(--color-success)',
+        warning: 'var(--color-warning)',
+        danger: 'var(--color-danger)',
+        info: 'var(--color-info)',
+        dark: 'var(--color-dark)',
+        light: 'var(--color-light)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      backgroundImage: {
+        'hero-gradient': 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-secondary) 100%)',
+        'card-gradient': 'linear-gradient(145deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%)',
       },
     },
   },
