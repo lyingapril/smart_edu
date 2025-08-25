@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function HomePage() {
   return (
     <>
@@ -23,10 +25,10 @@ export default function HomePage() {
                         </div>
                         <div className="mt-8 flex items-center text-sm">
                             <div className="flex -space-x-2 mr-4">
-                                <img src="https://picsum.photos/id/1001/100/100" alt="用户头像" className="w-8 h-8 rounded-full border-2 border-white"/>
-                                <img src="https://picsum.photos/id/1002/100/100" alt="用户头像" className="w-8 h-8 rounded-full border-2 border-white"/>
-                                <img src="https://picsum.photos/id/1003/100/100" alt="用户头像" className="w-8 h-8 rounded-full border-2 border-white"/>
-                                <img src="https://picsum.photos/id/1004/100/100" alt="用户头像" className="w-8 h-8 rounded-full border-2 border-white"/>
+                                <Image src="https://picsum.photos/id/1001/100/100" alt="用户头像" className="w-8 h-8 rounded-full border-2 border-white"/>
+                                <Image src="https://picsum.photos/id/1002/100/100" alt="用户头像" className="w-8 h-8 rounded-full border-2 border-white"/>
+                                <Image src="https://picsum.photos/id/1003/100/100" alt="用户头像" className="w-8 h-8 rounded-full border-2 border-white"/>
+                                <Image src="https://picsum.photos/id/1004/100/100" alt="用户头像" className="w-8 h-8 rounded-full border-2 border-white"/>
                                 <div className="w-8 h-8 rounded-full bg-white/20 border-2 border-white flex items-center justify-center text-xs">
                                     +25k
                                 </div>
@@ -36,7 +38,7 @@ export default function HomePage() {
                     </div>
                     <div className="md:w-1/2 relative">
                         <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl transform md:rotate-1 hover:rotate-0 transition-all duration-500">
-                            <img src="https://picsum.photos/id/20/600/400" alt="智慧教育平台展示" className="w-full h-auto"/>
+                            <Image src="https://picsum.photos/id/20/600/400" alt="智慧教育平台展示" className="w-full h-auto"/>
                         </div>
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-accent/30 rounded-xl blur-3xl -z-10"></div>
                     </div>

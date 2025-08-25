@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function ResourcesPage() {
   return (
     <section id="resources" className="py-16 bg-gray-50">
@@ -12,7 +14,7 @@ export default function ResourcesPage() {
                     {/* 资源卡片1 */}
                     <div className="bg-white rounded-xl overflow-hidden shadow-md card-hover">
                         <div className="h-48 overflow-hidden">
-                            <img src="https://picsum.photos/id/24/600/400" alt="精品课程" className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"/>
+                            <Image src="https://picsum.photos/id/24/600/400" alt="精品课程" className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"/>
                         </div>
                         <div className="p-6">
                             <div className="flex items-center mb-3">
@@ -30,7 +32,7 @@ export default function ResourcesPage() {
                     {/* 资源卡片2 */}
                     <div className="bg-white rounded-xl overflow-hidden shadow-md card-hover">
                         <div className="h-48 overflow-hidden">
-                            <img src="https://picsum.photos/id/25/600/400" alt="数字教材" className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"/>
+                            <Image src="https://picsum.photos/id/25/600/400" alt="数字教材" className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"/>
                         </div>
                         <div className="p-6">
                             <div className="flex items-center mb-3">
@@ -48,7 +50,7 @@ export default function ResourcesPage() {
                     {/* 资源卡片3 */}
                     <div className="bg-white rounded-xl overflow-hidden shadow-md card-hover">
                         <div className="h-48 overflow-hidden">
-                            <img src="https://picsum.photos/id/26/600/400" alt="教学课件" className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"/>
+                            <Image src="https://picsum.photos/id/26/600/400" alt="教学课件" className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"/>
                         </div>
                         <div className="p-6">
                             <div className="flex items-center mb-3">

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function FeaturesPage() {
   return (
     <section id="features" className="py-16 bg-gray-50">
@@ -13,7 +15,7 @@ export default function FeaturesPage() {
                     <div className="flex flex-col md:flex-row gap-6">
                         <div className="md:w-2/5">
                             <div className="rounded-xl overflow-hidden h-full">
-                                <img src="https://picsum.photos/id/24/400/500" alt="读书平台" className="w-full h-full object-cover"/>
+                                <Image src="https://picsum.photos/id/24/400/500" alt="读书平台" className="w-full h-full object-cover"/>
                             </div>
                         </div>
                         <div className="md:w-3/5 flex flex-col justify-center">
@@ -21,7 +23,7 @@ export default function FeaturesPage() {
                                 <i className="fa fa-book mr-1"></i> 读书平台
                             </span>
                             <h3 className="text-2xl font-bold mb-3">数字阅读空间</h3>
-                            <p className="text-gray-600 mb-4">设有"青少年读书空间""老年读书社区"等多个板块，汇聚海量电子书籍和阅读资源，全部免费向用户开放，培养阅读习惯，提升全民素养。</p>
+                            <p className="text-gray-600 mb-4">设有&#34;青少年读书空间&#34;&#34;老年读书社区&#34;等多个板块，汇聚海量电子书籍和阅读资源，全部免费向用户开放，培养阅读习惯，提升全民素养。</p>
                             <ul className="space-y-2 mb-6">
                                 <li className="flex items-start">
                                     <i className="fa fa-check-circle text-success mt-1 mr-2"></i>
@@ -46,7 +48,7 @@ export default function FeaturesPage() {
                     <div className="flex flex-col md:flex-row gap-6">
                         <div className="md:w-2/5">
                             <div className="rounded-xl overflow-hidden h-full">
-                                <img src="https://picsum.photos/id/180/400/500" alt="AI智能学习" className="w-full h-full object-cover"/>
+                                <Image src="https://picsum.photos/id/180/400/500" alt="AI智能学习" className="w-full h-full object-cover"/>
                             </div>
                         </div>
                         <div className="md:w-3/5 flex flex-col justify-center">
@@ -79,7 +81,7 @@ export default function FeaturesPage() {
                     <div className="flex flex-col md:flex-row gap-6">
                         <div className="md:w-2/5">
                             <div className="rounded-xl overflow-hidden h-full">
-                                <img src="https://picsum.photos/id/101/400/500" alt="地方平台" className="w-full h-full object-cover"/>
+                                <Image src="https://picsum.photos/id/101/400/500" alt="地方平台" className="w-full h-full object-cover"/>
                             </div>
                         </div>
                         <div className="md:w-3/5 flex flex-col justify-center">
@@ -87,7 +89,7 @@ export default function FeaturesPage() {
                                 <i className="fa fa-map-marker mr-1"></i> 地方服务
                             </span>
                             <h3 className="text-2xl font-bold mb-3">地方教育平台</h3>
-                            <p className="text-gray-600 mb-4">覆盖全国32个地区的地方教育平台，整合地方特色教育资源和服务，实现教育服务"全国一盘棋"，促进区域教育均衡发展。</p>
+                            <p className="text-gray-600 mb-4">覆盖全国32个地区的地方教育平台，整合地方特色教育资源和服务，实现教育服务&#34;全国一盘棋&#34;，促进区域教育均衡发展。</p>
                             <ul className="space-y-2 mb-6">
                                 <li className="flex items-start">
                                     <i className="fa fa-check-circle text-success mt-1 mr-2"></i>
@@ -112,7 +114,7 @@ export default function FeaturesPage() {
                     <div className="flex flex-col md:flex-row gap-6">
                         <div className="md:w-2/5">
                             <div className="rounded-xl overflow-hidden h-full">
-                                <img src="https://picsum.photos/id/103/400/500" alt="国际平台" className="w-full h-full object-cover"/>
+                                <Image src="https://picsum.photos/id/103/400/500" alt="国际平台" className="w-full h-full object-cover"/>
                             </div>
                         </div>
                         <div className="md:w-3/5 flex flex-col justify-center">

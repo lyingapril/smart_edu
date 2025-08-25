@@ -1,55 +1,25 @@
 import type { ReactNode } from 'react';
-
+import './globals.css';
+import ChartScript from '@/components/ChartScript';
 export const metadata = {
   title: '智慧教育公共服务平台',
   charset: 'UTF-8',
+  other: {
+    link: [
+      {
+        rel: 'stylesheet',
+        href: 'https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css'
+      }
+    ]
+  }
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="zh-CN">
       <head>
-        {/* 引入外部资源（Tailwind、Font Awesome、Chart.js） */}
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
-        
-        {/* Tailwind 配置 */}
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            tailwind.config = {
-              theme: {
-                extend: {
-                  colors: {
-                    primary: '#165DFF',
-                    secondary: '#36BFFA',
-                    accent: '#FF7D00',
-                    success: '#00B42A',
-                    warning: '#FF7D00',
-                    danger: '#F53F3F',
-                    dark: '#1D2129',
-                    light: '#F2F3F5'
-                  },
-                  fontFamily: {
-                    sans: ['Inter', 'system-ui', 'sans-serif'],
-                  },
-                }
-              }
-            }
-          `
-        }} />
-        
-        {/* 自定义工具类 */}
-        <style type="text/tailwindcss">
-          {`
-            @layer utilities {
-              .content-auto { content-visibility: auto; }
-              .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-              .transition-custom { transition: all 0.3s ease; }
-              .card-hover { @apply hover:shadow-lg hover:-translate-y-1 transition-all duration-300; }
-            }
-          `}
-        </style>
+        {/* 引入Chart.js的客户端组件 */}
+        <ChartScript />
       </head>
       <body className="bg-gray-50 font-sans text-dark">
         {/* 顶部通知栏（共享） */}
